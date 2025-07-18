@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Profile Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Make sure to link to the correct CSS file name -->
+    <link rel="stylesheet" href="style3 copy 4.css"> 
+</head>
+<body>
+    <div class="container">
+        <!-- Section 1: Navigation Menu -->
+        <nav class="nav-menu">
+            <div class="brand">MyProfile</div>
+            <div class="nav-links">
+                <a href="#header">Home</a>
+                <a href="#biodata">Biodata</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+
+        <!-- Section 2: Header Section -->
+        <section id="header" class="header-section">
+            <div class="header-content">
+                <h2>Selamat Datang di Website Saya</h2>
+                <p>Ini adalah contoh header dengan dua kolom. Kolom kiri berisi teks seperti ini. Halaman ini didesain untuk menjadi responsif dan adaptif di berbagai perangkat.</p>
+                <button onclick="window.location.href='#'">Pelajari Lebih Lanjut</button>
+            </div>
+            <div class="header-image">
+                <img src="images/profilepic.jpg" alt="Profile Image">
+            </div>
+        </section>
+
+        <!-- Section 3: About Me / Biodata -->
+        <section id="biodata" class="section biodata-section">
+            <h3>About Me</h3>
+            <p>A short introduction about myself, showcasing my skills and interests.</p>
+            <table class="biodata-table">
+                <thead>
+                    <tr>
+                        <th><b>Nama Lengkap</b></th>
+                        <th><b>Pendidikan</b></th>
+                        <th><b>Pekerjaan</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Nama Lengkap">Giorgio Herson</td>
+                        <td data-label="Pendidikan">SMA</td>
+                        <td data-label="Pekerjaan">Fresh Graduate</td>
+                    </tr>
+                <thead>
+                    <tr>
+                        <th><b>Kontak</b></th>
+                        <th><b>Hobi</b></th>
+                        <th><b>Alamat</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <tr>
+                        <td data-label="Kontak">giorgioherson@gmail.com</td>
+                        <td data-label="Hobi">Gaming, Music, Reading</td>
+                        <td data-label="Alamat">Jl, Bukit Selatan</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        <!-- Section 4: Portfolio -->
+        <section id="portfolio" class="section portfolio-section">
+            <h3>Portofolio</h3>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/350x200/4CAF50/ffffff?text=Project+1" alt="Project 1">
+                    <b>Proyek 1</b>
+                    <p>Deskripsi singkat proyek pertama saya. Ini adalah contoh proyek yang menunjukkan keahlian saya dalam desain web.</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/350x200/FFC107/ffffff?text=Project+2" alt="Project 2">
+                    <b>Proyek 2</b>
+                    <p>Proyek kedua ini fokus pada pengembangan aplikasi mobile. Menampilkan kemampuan saya dalam UI/UX.</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://placehold.co/350x200/9C27B0/ffffff?text=Project+3" alt="Project 3">
+                    <b>Proyek 3</b>
+                    <p>Proyek ketiga adalah studi kasus dalam analisis data. Menjelaskan bagaimana saya menggunakan data untuk membuat keputusan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Contact Section -->
+        <section id="contact" class="section contact-section">
+            <h3>Contact Me</h3>
+            <p>Have a question or want to work together? Leave your details below.</p>
+            <form class="contact-form" action="#">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Giorgio Herson. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
