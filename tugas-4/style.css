@@ -1,0 +1,315 @@
+/* Base styles for the body */
+body {
+  font-family: "Montserrat", sans-serif;
+    color: #333;
+    background: #222121;
+}
+
+:root {
+    --primary-color: #FD6F00;
+    --secondary-color: #0000;
+
+    --orange-50: #ffefe6;
+    --orange-100: #ffcfb0;
+    --orange-200: #ffb78a;
+    --orange-300: #FF9654;
+    --orange-400: #FF8233;
+    --orange-500: #ff6300;
+    --orange-600: #E85A00;
+    --orange-700: #B54600;
+    --orange-800: #8C3600;
+    --orange-900: #6B2A00;
+
+    --black-50: #e6e6e6;
+    --black-100: #b0b0b0;
+    --black-200: #8a8a8a;
+    --black-300: #545454;
+    --black-400: #333333;
+    --black-500: #000000;
+    --black-600: #000000;
+    --black-700: #000000;
+    --black-800: #000000;
+    --black-900: #000000;
+}
+
+.text-white{color: #ffffff;}
+.text-primary{color: var(--primary-color)!important;}
+.text-orange-50 { color: var(--orange-50); }
+.text-orange-100 { color: var(--orange-100); }
+.text-orange-200 { color: var(--orange-200); }
+.text-orange-300 { color: var(--orange-300); }
+.text-orange-400 { color: var(--orange-400); }
+.text-orange-500 { color: var(--orange-500); }
+.text-orange-600 { color: var(--orange-600); }
+.text-orange-700 { color: var(--orange-700); }
+.text-orange-800 { color: var(--orange-800); }
+.text-orange-900 { color: var(--orange-900); }
+
+.text-black-50 { color: var(--black-50); }
+.text-black-100 { color: var(--black-100); }
+.text-black-200 { color: var(--black-200); }
+.text-black-300 { color: var(--black-300); }
+.text-black-400 { color: var(--black-400); }
+.text-black-500 { color: var(--black-500); }
+.text-black-600 { color: var(--black-600); }
+.text-black-700 { color: var(--black-700); }
+.text-black-800 { color: var(--black-800); }
+.text-black-900 { color: var(--black-900); }
+
+
+.bg-orange-50 { background-color: var(--orange-50); }
+.bg-orange-100 { background-color: var(--orange-100); }
+.bg-orange-200 { background-color: var(--orange-200); }
+.bg-orange-300 { background-color: var(--orange-300); }
+.bg-orange-400 { background-color: var(--orange-400); }
+.bg-orange-500 { background-color: var(--orange-500); }
+.bg-orange-600 { background-color: var(--orange-600); }
+.bg-orange-700 { background-color: var(--orange-700); }
+.bg-orange-800 { background-color: var(--orange-800); }
+.bg-orange-900 { background-color: var(--orange-900); }
+
+.bg-black-50 { background-color: var(--black-50); }
+.bg-black-100 { background-color: var(--black-100); }
+.bg-black-200 { background-color: var(--black-200); }
+.bg-black-300 { background-color: var(--black-300); }
+.bg-black-400 { background-color: var(--black-400); }
+.bg-black-500 { background-color: var(--black-500); }
+.bg-black-600 { background-color: var(--black-600); }
+.bg-black-700 { background-color: var(--black-700); }
+.bg-black-800 { background-color: var(--black-800); }
+.bg-black-900 { background-color: var(--black-900); }
+
+.filter-btn.bg-orange-500,
+.filter-btn.bg-orange-500:focus,
+.filter-btn.bg-orange-500:active,
+.filter-btn.active.bg-orange-500 {
+  background-color: #FD6F00 !important;
+  color: #fff !important;
+  border-color: #FD6F00 !important;
+}
+
+.display-1{
+    font-size: 80px;
+}
+
+h1, .h1{
+    font-size: 69px;
+}
+
+h2, .h2{
+    font-size: 55px;
+}
+
+h3, .h3{
+    font-size: 44px;
+}
+
+h4, .h4{
+    font-size: 35px;
+}
+
+h5, .h5{
+    font-size: 28px;
+}
+
+h6, .h6{
+    font-size: 23px;
+}
+
+p, .p{
+    font-size: 18px;
+}
+
+.p-sm{
+    font-size: 14px;
+}
+
+.p-label{
+    font-size: 12px;
+}
+
+.bg-orange-500:hover{
+    background-color: var(--orange-600);
+}
+
+.fw-semi-bold{
+    font-weight: 600;
+}
+
+.fw-bold{
+    font-weight: 700;
+}
+
+.profile-pic {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 768px) {
+  .profile-pic {
+    max-width: 180px;
+  }
+}
+
+.header-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.header-section p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.header-section button:hover {
+    background-color: #1a242f; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* About Me / Biodata Section */
+.biodata-section {
+    text-align: center;
+    padding: 20px;
+}
+
+.biodata-section h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.biodata-table th i,
+.biodata-table td i {
+  margin-right: 5px;
+  color: #2c3e50;
+}
+
+.biodata-section p {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+#biodata .card {
+  --bs-card-bg: var(--black-200);
+   color: var(--orange-100);
+}
+
+/* Styling for the biodata table */
+.biodata-table {
+    width: 100%;
+    border-collapse: collapse; /* Collapse borders for a cleaner look */
+    margin-top: 20px;
+    background-color: rgb(148, 148, 148); 
+    border-radius: 8px; 
+    overflow: hidden; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.biodata-table th,
+.biodata-table td {
+    padding: 15px;
+    border: 1px solid #6e6d6d; /* Light border for cells */
+    text-align: center;
+    vertical-align: middle;
+}
+
+.biodata-table th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Style the new subheader row to look like a th */
+.biodata-table .subheader td {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: 600;
+}
+
+.biodata-table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.biodata-table b {
+    color: #2c3e50; /* Darker text for labels */
+}
+
+/* Media Queries for Responsiveness */
+
+ /*Small devices (e.g., mobile phones) */
+  @media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .header-section {
+        grid-template-columns: 1fr; /* Single column for header on small screens */
+        text-align: center;
+    }
+
+    .header-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .header-section p {
+        font-size: 1rem;
+    }
+
+    .header-section img {
+        margin-top: 20px; /* Add space between text and image */
+    }
+
+    /* ===== RESPONSIVE TABLE STYLES START ===== */
+    .biodata-table thead {
+      display: none; /* Hide the table header row */
+    }
+
+     Hide the subheader row on mobile */
+    .biodata-table .subheader {
+        display: none;
+    }
+
+    .biodata-table tr {
+      display: block; /* Make rows stack */
+      border: none;
+      margin-bottom: 0;
+    }
+    
+    .biodata-table td {
+      display: block; /* Make cells stack */
+      text-align: left;
+      padding: 15px;
+      border: none;
+      border-bottom: 1px solid #eee; /* Add a line between each item */
+    }
+
+    .biodata-table tr:last-child td:last-child {
+      border-bottom: none; /* Remove border from the very last item */
+    }
+
+    /* This is where the magic happens */
+    .biodata-table td::before {
+      content: attr(data-label); /* Get the label from the data-label attribute */
+      display: block; /* Make the label a block element */
+      font-weight: bold;
+      margin-bottom: 5px; /* Add space between label and data */
+      color: #333;
+    }
+    /* ===== RESPONSIVE TABLE STYLES END ===== */
+
+
+}
+
+ /* edium devices (e.g., tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 25px;
+    }
+
+    .header-section {
+        grid-template-columns: 3fr 2fr; /* Adjust header columns for tablets */
+    }
+
+}
