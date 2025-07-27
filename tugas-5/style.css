@@ -1,0 +1,15 @@
+
+    .product-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    
+.modal-body.image-preview-body {
+  max-height: 70vh;
+  overflow: auto;
+}
+#previewImg {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}

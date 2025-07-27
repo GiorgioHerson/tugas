@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Etalase Produk</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container py-5">
+  <h1 class="mb-4 text-center">Etalase Produk</h1>
+
+  <!-- Filter & Search -->
+  <div class="row mb-4">
+    <div class="col-md-4 mb-2">
+      <input type="text" id="searchInput" class="form-control" placeholder="Cari nama produk...">
+    </div>
+    <div class="col-md-4 mb-2">
+      <select id="categoryFilter" class="form-select">
+        <option value="">Semua Kategori</option>
+      </select>
+    </div>
+    <div class="col-md-4 mb-2">
+      <select id="priceSort" class="form-select">
+        <option value="">Urutkan Harga</option>
+        <option value="asc">Harga Terendah</option>
+        <option value="desc">Harga Tertinggi</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Produk -->
+  <div class="row" id="productList"></div>
+</div>
+
+<!-- Modal Preview Gambar -->
+<div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-labelledby="imagePreviewLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imagePreviewLabel">Preview Gambar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body image-preview-body text-center">
+    <div style="display: inline-block; position: relative;">
+    <img id="previewImg" src="" alt="Preview" style="transition: transform 0.2s;" />
+     </div>
+     </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" id="zoomOutBtn">-</button>
+        <button type="button" class="btn btn-secondary" id="zoomInBtn">+</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+</html>
