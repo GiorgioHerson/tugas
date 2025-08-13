@@ -1,24 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\storeController;
+use App\Http\Controllers\CartController;
 
-Route::get('/', function () {
-    return view('home');
-    /* return view('welcome') */;
-});
+Route::get('/', [storeController::class, 'index']) 
+    ->name('store.index');
+    
 
+Route::get('/products', [storeController::class, 'index'])
+    ->name('store.products');
 
-Route::get('/products', function () {
-    return "products details";
-
-});
-
-Route::get('/cart', function () {
-    return "cart details";
-
-});
-
-Route::get('/checkout', function () {
-    return "checkout details";
-
-});
+Route::get('/cart', [CartController::class, 'index'])
+    ->name('cart.index');
