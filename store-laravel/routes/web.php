@@ -5,11 +5,16 @@ use App\Http\Controllers\storeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 
-Route::get('/', [storeController::class, 'index']) 
-    ->name('store.index');
-    
+Route::get('/', [storeController::class, 'index'])
 
-Route::get('/cart', [CartController::class, 'index'])
+    ->name('store.index');
+
+ Route::get('/products', [storeController::class, 'index'])
+
+    ->name('store.products');
+
+ Route::get('/cart', [CartController::class, 'index'])
+
     ->name('cart.index');
 
 Route::get('/product-details', [ProductController::class, 'show'])
