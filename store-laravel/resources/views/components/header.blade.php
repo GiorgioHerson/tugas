@@ -43,6 +43,9 @@
                 <i class="fas fa-shopping-cart"></i>
                 <span>Cart</span>
                     </div>
+                </div>
+            </a>
+        </div>
 
     </div>
 </header>

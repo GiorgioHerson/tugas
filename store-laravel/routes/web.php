@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\storeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductCategoryController;
 
 Route::get('/', [storeController::class, 'index'])
 
@@ -18,4 +19,9 @@ Route::get('/', [storeController::class, 'index'])
     ->name('cart.index');
 
 Route::get('/product-details', [ProductController::class, 'show'])
+
     ->name('product.details');
+
+    Route::get('/catalog', [ProductController::class, 'index'])
+
+    ->name('catalog.index');

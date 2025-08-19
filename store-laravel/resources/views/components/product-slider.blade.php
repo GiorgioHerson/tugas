@@ -7,7 +7,7 @@
         <h2 class="section-title">
             Grab the best deal on <span class="highlight">Electronics</span>
         </h2>
-        <a href="/smartphones" class="view-all-link">
+        <a href="/catalog?category=5" class="view-all-link">
             View All <i class="fas fa-chevron-right"></i>
         </a>
     </header>
