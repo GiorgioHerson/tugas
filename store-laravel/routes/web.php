@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\storeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\ProductCategoryController;
+use App\Models\Product;
 
 Route::get('/', [storeController::class, 'index'])
 
@@ -31,6 +34,11 @@ Route::get('/product-details', [ProductController::class, 'show'])
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::prefix('admin')->name('admin.')->group(function () {
+     Route::resource('products', AdminProductController::class);
+        Route::resource('product-categories',ProductCategoryController::class);
+    });
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

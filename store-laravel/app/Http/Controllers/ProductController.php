@@ -46,5 +46,5 @@ class ProductController extends Controller
         $products = Product::all();
         return view('product-details', ['product' => $products]);
     }
-}
 
+}

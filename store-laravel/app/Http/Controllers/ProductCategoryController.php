@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProductCategory;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductCategoryController extends Controller
@@ -13,7 +14,8 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = ProductCategory::paginate(8);
+        return view('admin.product-categories.index', compact('categories'));
     }
 
     /**
@@ -21,7 +23,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -29,7 +31,13 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        ProductCategory::create($validated);
+
+        return redirect()->route('admin.product-categories.index');
     }
 
     /**
@@ -45,7 +53,7 @@ class ProductCategoryController extends Controller
      */
     public function edit(ProductCategory $productCategory)
     {
-        //
+        return view('admin.product-categories.edit', compact('productCategory'));
     }
 
     /**
@@ -53,7 +61,13 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, ProductCategory $productCategory)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $productCategory->update($validated);
+
+        return redirect()->route('admin.product-categories.index');
     }
 
     /**
@@ -61,6 +75,9 @@ class ProductCategoryController extends Controller
      */
     public function destroy(ProductCategory $productCategory)
     {
-        //
+        if ($productCategory) {
+            $productCategory->delete();
+            return redirect()->route('admin.product-categories.index');
+        }
     }
 }
