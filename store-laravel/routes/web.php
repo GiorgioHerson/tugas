@@ -6,6 +6,7 @@ use App\Http\Controllers\storeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Models\Product;
 
@@ -29,15 +30,16 @@ Route::get('/product-details', [ProductController::class, 'show'])
 
     ->name('catalog.index');
 
-    Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+    
 Route::middleware('auth')->group(function () {
-    Route::prefix('admin')->name('admin.')->group(function () {
-     Route::resource('products', AdminProductController::class);
-        Route::resource('product-categories',ProductCategoryController::class);
+Route::middleware('admin')->group(function () {
+        Route::get('/dashboard', [DashboardController::class ,'index'])->name('dashboard');
+        Route::prefix('admin')->name('admin.')->group(function () {
+        Route::resource('products', AdminProductController::class);
+            Route::resource('product-categories',ProductCategoryController::class);
     });
+       Route::get('/dashboard', [DashboardController::class ,'index'])->name('dashboard');
+});
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

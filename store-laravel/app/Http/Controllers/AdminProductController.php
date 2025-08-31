@@ -36,11 +36,9 @@ public function create()
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Map category_id to product_category_id
         $validated['product_category_id'] = $validated['category_id'];
         unset($validated['category_id']);
 
-        // Handle image upload if present
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('products', 'public');
         }
@@ -82,11 +80,9 @@ public function create()
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,img|max:2048'
         ]);  
 
-        // Map category_id to product_category_id
         $validated['product_category_id'] = $validated['category_id'];
         unset($validated['category_id']);
 
-        // Handle image upload if present
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('products', 'public');
         }

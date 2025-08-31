@@ -37,7 +37,21 @@
         <div class="header-right">
             <a href="/login" class="nav-link">
                 <i class="far fa-user"></i>
+                @Auth
+                <span>{{ Auth::user()->name }}</span>
+                <a class="nav-link" href="{{ route('profile.edit') }}">Profile</a>
+                <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; cursor: pointer;">
+                        Logout
+                    </button>
+                </form>
+                @if (Auth::user()->role === 'admin')
+                <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                @endif
+                @else
                 <span>Sign Up/Sign In</span>
+                @endAuth
             </a>
             <a href="/cart" class="nav-link">
                 <i class="fas fa-shopping-cart"></i>
