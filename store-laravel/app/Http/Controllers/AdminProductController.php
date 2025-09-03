@@ -9,11 +9,28 @@ use App\Models\ProductCategory;
 
 class AdminProductController extends Controller
 {
-     public function index()
+     public function index(Request $request)
     {
+        $query = Product::query();
+        $categories = ProductCategory::all();
+       
+        if ($categoryId = $request->get ('category')) {
+            $query->where('product_category_id', $categoryId);
+        }
+        
+        if ($search = $request->get('search')) {
+            $query->where('name', 'like', "%{$search}%")
+            ->orWhere('description', 'like', "%{$search}%")
+            ->orWhereHas('category', function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%");
+            });
+            
+        }
+
         try {
-            $products = Product::paginate(5);
-            return view('admin.products.index', compact('products'));
+            $products = $query->paginate(10); 
+           
+            return view('admin.products.index', compact('products' , 'categories'));
         } catch (\Exception $e) {
             return back()->with('error', 'Error loading products: ' . $e->getMessage());
         }
@@ -28,7 +45,7 @@ public function create()
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:products,name',
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:1',
@@ -45,7 +62,7 @@ public function create()
 
         Product::create($validated);
 
-        return redirect()->route('admin.products.index')->with('success', 'Product created successfully!');
+        return redirect()->route('admin.products.index')->with('success', 'Product has been created successfully!');
     }
 
     public function destroy(Product $product)
@@ -75,7 +92,7 @@ public function create()
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
-            'stock' => 'required|integer|min:1',
+            'stock' => 'required|integer|min:0',
             'category_id' => 'required|exists:product_categories,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,img|max:2048'
         ]);  

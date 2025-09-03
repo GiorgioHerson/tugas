@@ -15,6 +15,7 @@
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
+
             </ul>
         </div>
     @endif
@@ -60,45 +61,6 @@
                             </button>
                         </div>
                         </form>
-                    <script>
-                    function validateForm() {
-                    let form = document.getElementById('createProductForm');
-                    let name = form['name'].value.trim();
-                    let description = form['description'].value.trim();
-                    let price = form['price'].value.trim();
-                    let stock = form['stock'].value.trim();
-                    let category = form['category_id'] ? form['category_id'].value : '';
-                    let imageInput = form['image'];
-                    let errors = [];
-
-                    if (!name) errors.push('Name is required.');
-                    if (!description) errors.push('Description is required.');
-                    if (!price || isNaN(price) || Number(price) < 0) errors.push('Price must be a positive number.');
-                    if (!stock || isNaN(stock) || Number(stock) < 1) errors.push('Stock must be at least 1.');
-                    if (!category) errors.push('Category is required.');
-                    if (!imageInput.value) errors.push('Image is required.');
-                    else {
-                        // Validasi ekstensi dan ukuran gambar
-                        const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif' 'webp' 'img'];
-                        const file = imageInput.files[0];
-                        if (file) {
-                            const ext = file.name.split('.').pop().toLowerCase();
-                            if (!allowedExtensions.includes(ext)) {
-                                errors.push('Image must be a file of type: jpeg, png, jpg, gif, webp, img.');
-                            }
-                            if (file.size > 2 * 1024 * 1024) {
-                                errors.push('Image size must not exceed 2MB.');
-                            }
-                        }
-                    }
-
-                    if (errors.length > 0) {
-                        alert(errors.join('\n'));
-                        return false;
-                    }
-                    return true;
-                    }
-                    </script>
                     </form>
                 </div>
             </div>

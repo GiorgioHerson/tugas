@@ -7,11 +7,46 @@
 @endsection
 
 @section('content')
+@include('layouts.status_info')
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a href="{{ route('admin.products.create') }}" class="mb-4 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Add New Product</a>
+
+                    <div class="mb-4 flex gap-4">
+                        <form action="{{ route('admin.products.index') }}" method="GET" class="flex-1">
+                            <div class="flex gap-2">
+                                <input
+                                    type="text"
+                                    name="search"
+                                    placeholder="Search products..."
+                                    value="{{ request('search') }}"
+                                    class="w-full px-4 py-2 rounded border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                                >
+                                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                                    Search
+                                </button>
+                                @if(request('search'))
+                                    <a href="{{ route('admin.products.index') }}" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">
+                                        Clear
+                                    </a>
+                                @endif
+                            </div>
+                        </form>
+                    </div>
+                <div>
+                    <form action ="{{ route('admin.products.index') }}" method="GET" class ="mb-4">
+                        <label for="category" class="mr-2">Filter by Category:</label>
+                        <select name="category" id="category" onchange="this.form.submit()" class="px-4 py-2 rounded border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                            <option value="">All Categories</option>
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </form>
 
                     <table class="min-w-full bg-white dark:bg-gray-800 border">
                         <thead>
@@ -50,9 +85,15 @@
                                     </td>
                                 </tr>
                             @empty
+                            @if (request('search'))
                                 <tr>
                                     <td colspan="7" class="px-4 py-2 border text-center text-gray-500">No products found.</td>
                                 </tr>
+                                @else
+                                <tr>
+                                    <td colspan="7" class="px-4 py-2 border text-center text-gray-500">No products available.</td>
+                                </tr>
+                                @endif
                             @endforelse
                         </tbody>
                     </table>

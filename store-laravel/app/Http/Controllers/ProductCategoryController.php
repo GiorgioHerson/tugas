@@ -15,9 +15,16 @@ class ProductCategoryController extends Controller
     public function index()
     {
         $categories = ProductCategory::paginate(8);
-        return view('admin.product-categories.index', compact('categories'));
-    }
+         $productStock = Product::sum('stock');
+         $productPrices = Product::sum('price');
 
+     $totalStockValue = Product::all()->sum(function ($product) {
+        return $product->price * $product->stock;
+     });
+
+    return view('admin.product-categories.index', compact('categories',
+     'productStock', 'productPrices', 'totalStockValue'));
+}
     /**
      * Show the form for creating a new resource.
      */
@@ -32,12 +39,14 @@ class ProductCategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:product_categories,name',
         ]);
 
-        ProductCategory::create($validated);
+        $category = new ProductCategory;
+        $category->name = $request->name;
+        $category ->save();
 
-        return redirect()->route('admin.product-categories.index');
+        return redirect()->back()->with('success', 'Category created successfully!');
     }
 
     /**

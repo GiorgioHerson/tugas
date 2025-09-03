@@ -81,7 +81,6 @@
                     if (!description) errors.push('Description is required.');
                     if (!price || isNaN(price) || Number(price) < 0) errors.push('Price must be a positive number.');
                     if (!stock || isNaN(stock) || Number(stock) < 1) errors.push('Stock must be at least 1.');
-                    if (!imageInput.value && !'{{ $product->image }}') errors.push('Image is required.');
                     if (!category) errors.push('Category is required.');
 
                     if (errors.length > 0) {
