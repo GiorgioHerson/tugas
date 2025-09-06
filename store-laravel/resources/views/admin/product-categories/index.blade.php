@@ -49,6 +49,9 @@
                             <tr>
                                 <th class="px-4 py-2 border">ID</th>
                                 <th class="px-4 py-2 border">Name</th>
+                                <th class="px-4 py-2 border">Products Count</th>
+                                <th class="px-4 py-2 border">Total Stock</th>
+                                <th class="px-4 py-2 border">Total Value</th>
                                 <th class="px-4 py-2 border">Actions</th>
                             </tr>
                         </thead>
@@ -57,6 +60,9 @@
                                 <tr>
                                     <td class="px-4 py-2 border">{{ $category->id }}</td>
                                     <td class="px-4 py-2 border">{{ $category->name }}</td>
+                                    <td class="px-4 py-2 border">{{ $category->products_count }}</td>
+                                    <td class="px-4 py-2 border">{{ $category->products_sum_stock ?? 0 }}</td>
+                                    <td class="px-4 py-2 border"> Rp {{ number_format(($category->products_sum_price*$category->products_sum_stock ) ?? 0, 0, ',', '.') }}</td> 
                                     <td class="px-4 py-2 border">
                                         <button 
                                             type="button" 
@@ -97,7 +103,7 @@
                                             document.getElementById('editCategoryModal-' + id).classList.add('hidden');
                                         }
                                         </script>
-                                        <form action="{{ route('admin.product-categories.destroy', $category->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure?');">
+                                        <form action="{{ route('admin.product-categories.destroy', $category->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete the category {{ $category->name }} ?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="px-2 py-1 bg-red-600 text-white rounded hover:bg-red-700">Delete</button>

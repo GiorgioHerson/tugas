@@ -15,7 +15,6 @@
                 <nav class="dropdown-menu">
                     <a href="/" class="dropdown-menu-link">Home</a>
                     <a href="/catalog" class="dropdown-menu-link">Catalog</a>
-                    <a href="/product-details" class="dropdown-menu-link">Product Details</a>
                     <a href="/cart" class="dropdown-menu-link">Cart</a>
                 </nav>
             </div>
@@ -24,13 +23,20 @@
 
         <!-- Center Section: Search Bar -->
         <div class="header-center">
-            <div class="search-bar">
+            <form action="{{ route('store.index') }}" method="GET" class="search-bar" style="display: flex; align-items: center;">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-input" placeholder="Search essentials, groceries and more...">
-                <button class="filter-icon" aria-label="Search options">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    name="search"
+                    placeholder="Search essentials, groceries and more..."
+                    value="{{ request('search') }}"
+                    style="flex: 1;"
+                >
+                <button type="submit" class="filter-icon" aria-label="Search">
                     <i class="fas fa-sliders-h"></i>
                 </button>
-            </div>
+            </form>
         </div>
 
         <!-- Right Section: Auth and Cart -->

@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Models\Product;
 
 Route::get('/', [storeController::class, 'index'])
@@ -18,11 +19,16 @@ Route::get('/', [storeController::class, 'index'])
 
     ->name('store.products');
 
- Route::get('/cart', [CartController::class, 'index'])
 
-    ->name('cart.index');
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::get('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('cart/update/{id}', [CartController::class, 'updateQuantity'])->name('cart.update');
+Route::post('cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
-Route::get('/product-details', [ProductController::class, 'show'])
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/checkout', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
+
+Route::get('/product-details/{id}', [ProductController::class, 'show'])
 
     ->name('product.details');
 

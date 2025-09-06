@@ -10,8 +10,7 @@ use App\Models\ProductCategory;
 class ProductController extends Controller
 {
 
-
-        public function index(Request $request)
+    public function index(Request $request)
     {
         $query = Product::query();
 
@@ -41,10 +40,16 @@ class ProductController extends Controller
         ]);
     }
 
-    public function show()
+    public function show($id)
     {
-        $products = Product::all();
-        return view('product-details', ['product' => $products]);
-    }
+        $product = Product::with('category')->findOrFail($id);
 
+        $sessionKey = 'product_clicked_' . $id;
+        if (!session()->has($sessionKey)) {
+            $product->increment('clicks');
+            session()->put($sessionKey, true);
+        }
+
+        return view('product-details', compact('product'));
+    }
 }

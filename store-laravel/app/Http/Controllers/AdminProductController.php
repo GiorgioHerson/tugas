@@ -62,14 +62,14 @@ public function create()
 
         Product::create($validated);
 
-        return redirect()->route('admin.products.index')->with('success', 'Product has been created successfully!');
+        return redirect()->route('admin.products.index')->with('success', 'Product "' . $validated['name'] . '" created successfully!');
     }
 
     public function destroy(Product $product)
     {
         if ($product) {
             $product->delete();
-            return redirect()->route('admin.products.index');
+            return redirect()->route('admin.products.index' )->with('success', 'Product " ' . $product->name . ' " deleted successfully!' );
         }
     }
 

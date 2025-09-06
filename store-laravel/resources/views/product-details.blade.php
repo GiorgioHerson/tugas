@@ -16,37 +16,27 @@
         <div class="product-details-container">
             <!-- Left: Product Image -->
             <div class="product-image-gallery">
-                <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}">
+                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product['name'] }}">
             </div>
 
             <!-- Right: Product Info -->
-            <div class="product-info-details">
-                <h1 class="pdp-product-name">{{ $product['name'] }}</h1>
-                <p class="pdp-description">{{ $product['description'] }}</p>
-                
-                <div class="pdp-pricing">
-                    <span class="pdp-current-price">₹{{ number_format($product['current_price']) }}</span>
-                    <span class="pdp-original-price">₹{{ number_format($product['original_price']) }}</span>
-                    <span class="pdp-discount">{{ round(100 - ($product['current_price'] / $product['original_price'] * 100)) }}% OFF</span>
-                </div>
 
-                <div class="pdp-actions">
-                    <div class="quantity-selector">
-                        <label for="quantity">Quantity:</label>
-                        <input type="number" id="quantity" value="1" min="1">
-                    </div>
-                    <button class="btn btn-primary">Add to Cart</button>
-                    <button class="btn btn-secondary">Buy Now</button>
-                </div>
-                
-                <div class="delivery-info">
-                    <i class="fas fa-truck"></i>
-                    <span>Delivery by Tomorrow, 9 PM</span>
-                </div>
+            <div class="product-info">
+                <h1 class="product-name">{{ $product['name'] }}</h1>
+                <p class="product-price">Rp {{ number_format($product['price'], 2) }}</p>
+                <p class="product-stock">Stock: {{ $product['stock'] }}</p>
+                <p class="product-description">{{ $product['description'] }}</p>
+
+                <form action="{{ route('cart.add', $product['id']) }}" class="add-to-cart-form"> 
+                <button type="submit" class="add-to-cart-button" 
+                style="padding: 6px 16px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; margin-right: 16px;"
+                onclick="location.href='{{ route('cart.add', $product->id) }}'"
+                    >
+                        Add to Cart</button> 
+                </form>
             </div>
         </div>
     </main>
-
-</body>
-<x-footer />
+</body>    
+<x-footer/>
 </html>

@@ -6,6 +6,7 @@ use App\Models\ProductCategory;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductCategoryController extends Controller
 {
@@ -14,17 +15,16 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $categories = ProductCategory::paginate(8);
-         $productStock = Product::sum('stock');
-         $productPrices = Product::sum('price');
+        $categories = ProductCategory::withCount('products')
+                    ->withSum('products' , 'stock')
+                    ->withSum('products' , 'price')
+                    ->paginate(10);
 
-     $totalStockValue = Product::all()->sum(function ($product) {
-        return $product->price * $product->stock;
-     });
 
-    return view('admin.product-categories.index', compact('categories',
-     'productStock', 'productPrices', 'totalStockValue'));
-}
+    return view('admin.product-categories.index', compact('categories',) );
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -76,7 +76,7 @@ class ProductCategoryController extends Controller
 
         $productCategory->update($validated);
 
-        return redirect()->route('admin.product-categories.index');
+        return redirect()->route('admin.product-categories.index' )->with('success', 'Category updated successfully!');
     }
 
     /**
@@ -85,8 +85,12 @@ class ProductCategoryController extends Controller
     public function destroy(ProductCategory $productCategory)
     {
         if ($productCategory) {
+            if ($productCategory->products()->exists()) {
+                return redirect()->back()->withErrors([ 'Cannot delete category "' . $productCategory->name . '" with related products.']);
+            }
             $productCategory->delete();
-            return redirect()->route('admin.product-categories.index');
+            return redirect()->route('admin.product-categories.index')->with('success', 'Category deleted successfully!');
         }
     }
 }
+

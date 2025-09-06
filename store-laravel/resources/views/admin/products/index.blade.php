@@ -77,7 +77,7 @@
                                     <td class="px-4 py-2 border">{{ $product->stock }}</td>
                                     <td class="px-4 py-2 border">
                                         <a href="{{ route('admin.products.edit', $product->id) }}" class="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600">Edit</a>
-                                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure?');">
+                                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete:  {{ $product->name }}?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="px-2 py-1 bg-red-600 text-white rounded hover:bg-red-700">Delete</button>
