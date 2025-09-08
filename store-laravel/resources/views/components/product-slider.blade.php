@@ -15,7 +15,7 @@
     <div class="products-container">
         @foreach ($products as $product)
             <div class="product-card">
-                <div class="product-image-container">
+                <div class="product-image-container" style="img-fluid text-center; height: 200px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
                     <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
                 </div>
                 <div class="product-info" style="position: relative; min-height: 110px;">
